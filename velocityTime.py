@@ -40,10 +40,22 @@ c = 2/5
 g = 9.81
 v = np.sqrt((2*g*(y[0]-y))/(1+c))
 
+vinkel = np.arctan(dy)
+vx = np.cos(vinkel)*v
+
+u = 0.5*(vx[1:] + vx[:-1])
+dt = dx/u
+
+t = [0]
+for d in dt:
+    t.append(t[-1] + d)
+
+
+
 baneform = plt.figure('y(x)',figsize=(12,3))
-plt.plot(x,v)
-plt.title('Banens fart med posisjon')
-plt.xlabel('$x$ (m)',fontsize=20)
-plt.ylabel('$v(x)$ (m/s)',fontsize=20)
+plt.plot(t,v)
+plt.title('Banens fart med tid')
+plt.xlabel('$t$ ',fontsize=20)
+plt.ylabel('$v(t)$ (m/s)',fontsize=20)
 plt.grid()
 plt.show()
