@@ -44,7 +44,7 @@ yfast=np.asarray([0.276, 0.207, 0.187, 0.224, 0.167, 0.087, 0.055, 0.108])
 # inttan: tabell med 7 verdier for (yfast[n+1]-yfast[n])/h (n=0..7); dvs
 # banens stigningstall beregnet med utgangspunkt i de 8 festepunktene.
 inttan = np.diff(yfast)/h
-attempts=1
+# attempts=1 Trenger ikke attempts ettersom vi har funnet banen vår
 # while-løkken sjekker om en eller flere av de 3 betingelsene ovenfor
 # ikke er tilfredsstilt; i så fall velges nye festepunkter inntil
 # de 3 betingelsene er oppfylt
@@ -67,7 +67,7 @@ attempts=1
 # tallverdiene i tabellen yfast vil resultere i en tilfredsstillende bane. 
 
 # Omregning fra mm til m:
-#xfast = xfast/1000
+xfast = xfast/1000
 #yfast = yfast/1000
 
 #Programmet beregner deretter de 7 tredjegradspolynomene, et
@@ -101,6 +101,3 @@ plt.show()
 print('Antall forsøk',attempts)
 print('Festepunkthøyder (m)',yfast)
 print('Banens høyeste punkt (m)',np.max(y))
-
-print('NB: SKRIV NED festepunkthøydene når du/dere er fornøyd med banen.')
-print('Eller kjør programmet på nytt inntil en attraktiv baneform vises.')
