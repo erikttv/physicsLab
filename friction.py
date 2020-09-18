@@ -1,4 +1,6 @@
 # Vi importerer nødvendige biblioteker:
+from math import sin
+
 import matplotlib.pyplot as plt
 import numpy as np
 from scipy.interpolate import CubicSpline
@@ -40,6 +42,7 @@ c = 2/5
 g = 9.81
 v = np.sqrt((2*g*(y[0]-y))/(1+c))
 
+#Finding velocity dependent on time
 vinkel = np.arctan(dy)
 vx = np.cos(vinkel)*v
 
@@ -50,12 +53,15 @@ t = [0]
 for d in dt:
     t.append(t[-1] + d)
 
+#need only mass
+m = 1
+f = (c*m*g*np.sin(vinkel))/(1+c)
 
 
 baneform = plt.figure('y(x)',figsize=(12,3))
-plt.plot(t,v)
-plt.title('Banens fart med tid')
-plt.xlabel('$t$  (s)',fontsize=20)
-plt.ylabel('$v(t)$ (m/s)',fontsize=20)
+plt.plot(x,f)
+plt.title('Friksjon')
+plt.xlabel('$x$ (m)',fontsize=20)
+plt.ylabel('$f$ (N)',fontsize=20)
 plt.grid()
 plt.show()
