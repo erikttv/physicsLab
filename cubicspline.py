@@ -98,6 +98,6 @@ plt.show()
 #baneform.savefig("baneform.png", bbox_inches='tight')
 
 
-print('Antall forsøk',attempts)
+#print('Antall forsøk',attempts)
 print('Festepunkthøyder (m)',yfast)
 print('Banens høyeste punkt (m)',np.max(y))
