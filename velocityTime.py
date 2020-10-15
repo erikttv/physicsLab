@@ -40,6 +40,28 @@ c = 2/5
 g = 9.81
 v = np.sqrt((2*g*(y[0]-y))/(1+c))
 
+#Fetching values from textfile.
+f = open("Experimental data/006", "r")
+lines = f.readlines();
+print(lines)
+values = []
+elements = []
+for line in lines:
+    line = line.split("\t")
+    values.append(line)
+f.close()
+for index in range(len(values)):
+    values[index][-1] = values[index][-1][:-1]
+
+exper_t = []
+exper_v = []
+for index in range(len(values)):
+    if (index != 0 and index != 1 and index != len(values)-1):
+        exper_t.append(float(values[index][0]))
+        exper_v.append(float(values[index][3]))
+
+
+
 vinkel = np.arctan(dy)
 vx = np.cos(vinkel)*v
 
@@ -54,6 +76,7 @@ for d in dt:
 
 baneform = plt.figure('y(x)',figsize=(12,3))
 plt.plot(t,v)
+plt.plot(exper_t, exper_v)
 plt.title('Banens fart med tid')
 plt.xlabel('$t$  (s)',fontsize=20)
 plt.ylabel('$v(t)$ (m/s)',fontsize=20)
