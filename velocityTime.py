@@ -41,7 +41,7 @@ g = 9.81
 v = np.sqrt((2*g*(y[0]-y))/(1+c))
 
 #Fetching values from textfile.
-f = open("Experimental data/007", "r")
+f = open("Experimental data/007 2", "r")
 lines = f.readlines();
 values = []
 elements = []
