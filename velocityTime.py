@@ -41,9 +41,8 @@ g = 9.81
 v = np.sqrt((2*g*(y[0]-y))/(1+c))
 
 #Fetching values from textfile.
-f = open("Experimental data/006", "r")
+f = open("Experimental data/007", "r")
 lines = f.readlines();
-print(lines)
 values = []
 elements = []
 for line in lines:
@@ -61,6 +60,7 @@ for index in range(len(values)):
         exper_v.append(float(values[index][3]))
 
 
+print("Teoretisk sluttfart som er beregnet: " + str(v[-1]))
 
 vinkel = np.arctan(dy)
 vx = np.cos(vinkel)*v
