@@ -41,7 +41,7 @@ g = 9.81
 v = np.sqrt((2*g*(y[0]-y))/(1+c))
 
 #Fetching values from textfile.
-f = open("Experimental data/007 2", "r")
+f = open("Experimental data/007new2", "r")
 lines = f.readlines();
 values = []
 elements = []
@@ -61,7 +61,6 @@ for index in range(len(values)):
 
 
 print("Teoretisk sluttfart som er beregnet: " + str(v[-1]))
-
 vinkel = np.arctan(dy)
 vx = np.cos(vinkel)*v
 
@@ -72,7 +71,8 @@ t = [0]
 for d in dt:
     t.append(t[-1] + d)
 
-
+print("lengde på v numerisk: ", len(v))
+print("lengde på v eksperiment: ", len(exper_v))
 
 baneform = plt.figure('y(x)',figsize=(12,3))
 plt.plot(t,v)

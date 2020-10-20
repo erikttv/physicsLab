@@ -40,8 +40,37 @@ c = 2/5
 g = 9.81
 v = np.sqrt((2*g*(y[0]-y))/(1+c))
 
+
+f = open("Experimental data/007new2", "r")
+lines = f.readlines();
+values = []
+elements = []
+for line in lines:
+    line = line.split("\t")
+    values.append(line)
+f.close()
+for index in range(len(values)):
+    values[index][-1] = values[index][-1][:-1]
+
+exper_x = []
+exper_v = []
+for index in range(len(values)):
+    if (index != 0 and index != 1 and index != len(values)-1):
+        exper_x.append(abs(float(values[index][1])))
+        exper_v.append(float(values[index][3]))
+
+relative_x = [0]
+for index in range(len(exper_x)-1):
+    difference = abs(exper_x[index+1] - exper_x[index])
+    relative_x.append(difference + relative_x[index])
+
+
+
+print("siste verdi i fart: ", v[-1])
+
 baneform = plt.figure('y(x)',figsize=(12,3))
 plt.plot(x,v)
+plt.plot(relative_x, exper_v)
 plt.title('Banens fart med posisjon')
 plt.xlabel('$x$ (m)',fontsize=20)
 plt.ylabel('$v(x)$ (m/s)',fontsize=20)
